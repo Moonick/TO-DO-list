@@ -13,7 +13,7 @@ app.set('view engine', 'hbs');
 app.use(function(req, res, next) {
     req.db = db;
     next();
-})
+});
 app.use(express.static('./public'));
 
 todoContoller(app);
