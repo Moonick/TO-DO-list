@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 module.exports = function(app) {
 
-    app.get('/', function(req, res) {
+    app.get('/todo', function(req, res) {
         var db = req.db;
         var collection = db.get('todo');
         collection.find({}, { sort: 'item' }, function(e, data) {
@@ -11,7 +11,7 @@ module.exports = function(app) {
         })
     });
 
-    app.post('/', urlencodedParser, function(req, res) {
+    app.post('/todo', urlencodedParser, function(req, res) {
         var db = req.db;
         var collection = db.get('todo');
         collection.insert(req.body, function(err, result) {
@@ -21,7 +21,7 @@ module.exports = function(app) {
         });
     });
 
-    app.delete('/:item', function(req, res) {
+    app.delete('/todo:item', function(req, res) {
         var db = req.db;
         var collection = db.get('todo');
 
