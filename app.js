@@ -1,5 +1,5 @@
 var express = require('express');
-var todoContoller = require('./controllers/todoContoller');
+var todoController = require('./controllers/todoController');
 var mongo = require('mongodb');
 var monk = require('monk');
 
@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
 // };
 app.use(express.static('./public'));
 
-todoContoller(app);
-
 //listen to port
 app.listen(process.env.PORT || 3000);
+
+todoController(app);
